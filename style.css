@@ -1,0 +1,258 @@
+:root {
+  --olive: #555d42;
+  --beige: #c5b499;
+  --sheet: #f4efe8;
+  --ink: #161616;
+  --muted: #7a7368;
+  --glass: rgba(12, 12, 12, 0.46);
+  --radius: 32px;
+  --safe: env(safe-area-inset-bottom, 16px);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #050505; color: #fff; font-family: Manrope, system-ui, sans-serif; }
+body { min-height: 100dvh; }
+img { display: block; max-width: 100%; }
+button, a { font-family: inherit; }
+.phone {
+  width: min(430px, 100%);
+  margin: 0 auto;
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+}
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 18px 36px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: #000 center/cover no-repeat;
+  transform: scale(1.04);
+}
+.hero-bg::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.45) 45%, rgba(0,0,0,.72) 100%);
+}
+.glass {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius);
+  background: var(--glass);
+  backdrop-filter: blur(22px) saturate(1.2);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2);
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  padding: 22px 18px 18px;
+}
+.logo {
+  width: 72px; height: 72px;
+  border-radius: 22px;
+  object-fit: cover;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
+  background: #222;
+}
+.brand {
+  font-family: Fredoka, sans-serif;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: .95;
+  letter-spacing: .02em;
+}
+.brand span { display: block; }
+.lead {
+  margin-top: 14px;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.88);
+  font-weight: 500;
+}
+.note {
+  margin-top: 8px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: rgba(255,255,255,.62);
+}
+.tg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  height: 48px;
+  border-radius: 999px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14.5px;
+}
+.tg svg { width: 18px; height: 18px; }
+.carousel-wrap { margin-top: 18px; }
+.carousel {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.carousel::-webkit-scrollbar { display: none; }
+.carousel img {
+  flex: 0 0 78px;
+  width: 78px; height: 78px;
+  border-radius: 18px;
+  object-fit: cover;
+  scroll-snap-align: start;
+  pointer-events: none;
+  user-select: none;
+  background: #222;
+}
+.catalog {
+  position: relative;
+  padding: 8px 14px calc(28px + var(--safe));
+  background: #070707;
+}
+.catalog h2 {
+  font-family: Fredoka, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  padding: 12px 6px 16px;
+  letter-spacing: .02em;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.card {
+  position: relative;
+  aspect-ratio: 1 / 1.08;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  background: #111;
+  cursor: pointer;
+}
+.card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.plaque {
+  position: absolute;
+  left: 8px; right: 8px; bottom: 8px;
+  background: rgba(10,10,10,.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-align: center;
+}
+.detail {
+  position: fixed; inset: 0;
+  z-index: 20;
+  display: none;
+  width: min(430px, 100%);
+  margin: 0 auto;
+  background: #050505;
+}
+.detail.open { display: block; }
+.detail-hero {
+  height: 48dvh;
+  position: relative;
+  overflow: hidden;
+}
+.detail-hero img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+}
+.detail-hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.55));
+}
+.back {
+  position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  left: 14px;
+  z-index: 2;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(0,0,0,.45);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+.sheet {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  top: 40dvh;
+  background: var(--sheet);
+  color: var(--ink);
+  border-radius: 36px 36px 0 0;
+  padding: 22px 20px calc(18px + var(--safe));
+  box-shadow: 0 -16px 40px rgba(0,0,0,.28);
+  display: flex;
+  flex-direction: column;
+}
+.sheet-top {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.thumb {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 30%;
+  flex: 0 0 72px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.18);
+}
+.sheet h3 {
+  font-family: Fredoka, sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.05;
+}
+.org { margin-top: 4px; font-size: 13px; color: var(--olive); font-weight: 700; letter-spacing: .04em; }
+.made { margin-top: 6px; font-size: 13px; color: var(--muted); font-weight: 600; }
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 22px 0 18px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(85,93,66,.18);
+  border-bottom: 1px solid rgba(85,93,66,.18);
+}
+.split small { display: block; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+.split b { font-size: 18px; font-family: Fredoka, sans-serif; font-weight: 600; }
+.split .right { padding-left: 14px; border-left: 1px solid rgba(85,93,66,.18); }
+.price-line { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+.order {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+}
