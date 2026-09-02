@@ -29,7 +29,7 @@ function imgSrc(name) {
 }
 
 const TG_CHANNEL = "nastebel";
-const TG_ORDER = "nastebel";
+const TG_ORDER = "nastebel_flowers";
 
 const BOUQUETS = [
   { file: "1.jpg", name: "Янтарное поле", comp: "Подсолнухи, белые розы, эустома, дельфиниум, зелёный вибурнум / молюцелла.", pet: "осторожно с питомцами", petWarn: true },
