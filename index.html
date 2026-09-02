@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#050505" />
   <title>NA STEBEL — цветочная мастерская, Москва</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,54 +15,59 @@
   <div class="phone">
     <section class="hero">
       <div class="hero-bg" id="heroBg"></div>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Сменить тему">Aa</button>
       <div class="glass">
         <img class="logo" id="logo" alt="NA STEBEL" />
         <h1 class="brand"><span>NA</span><span>STEBEL</span></h1>
         <p class="lead">Цветочная мастерская в Москве. Без витрины: закупаем самые свежие цветы под ваш запрос, собираем 1–2 дня, упаковываем в день доставки.</p>
         <p class="note">Снимаем шипы, ухаживаем за цветами, аквапак и курьер по Москве.</p>
-        <a class="tg" id="heroTg" href="#">
+        <a class="tg" id="heroTg" href="https://t.me/nastebel" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.3 18.4 21c-.2 1-1.3 1.4-2.2.8l-5.3-4-2.6 2.5c-.3.3-.8.1-.9-.3L6 14.4 2.2 13c-1-.3-1-1.7.1-2.1L20.3 2.6c1-.4 2 .5 1.2 2.7z"/></svg>
-          Написать в Telegram
+          Канал в Telegram
         </a>
         <div class="carousel-wrap">
           <div class="carousel" id="carousel"></div>
         </div>
       </div>
     </section>
-    <section class="catalog">
+
+    <section class="catalog" id="catalog">
       <h2>Работы</h2>
       <div class="grid" id="grid"></div>
     </section>
+
+    <section class="about" id="about">
+      <h2>О мастерской</h2>
+      <div class="about-card">
+        <p>NA STEBEL — цветочная мастерская в Москве без витрины. Цветы закупаем под ваш запрос, собираем 1–2 дня и упаковываем в день доставки.</p>
+        <p>Шипы снимаем, стебли обрабатываем, ставим в аквапак. Курьер по Москве.</p>
+        <p class="about-note">Состав букетов — ориентир по фото. Точный набор подтвердим в переписке: работаем со срезом дня.</p>
+      </div>
+    </section>
   </div>
-  <div class="detail" id="detail">
+
+  <div class="detail" id="detail" aria-hidden="true">
     <div class="detail-hero">
       <button class="back" type="button" id="back" aria-label="Назад">←</button>
       <img id="dHero" alt="" />
     </div>
-    <div class="sheet">
-      <div class="sheet-top">
-        <img class="thumb" id="dThumb" alt="" />
-        <div>
-          <h3 id="dName"></h3>
-          <div class="org">NA STEBEL</div>
-          <div class="made" id="dMade"></div>
-        </div>
+    <div class="sheet" id="sheet">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <h3 id="dName"></h3>
+      <div class="org">NA STEBEL · Москва</div>
+      <div class="chips">
+        <span class="chip" id="dPet"></span>
+        <span class="chip quiet">предзаказ 1–2 дня</span>
       </div>
-      <div class="split">
-        <div>
-          <small>Собрано</small>
-          <b id="dCount"></b>
-        </div>
-        <div class="right">
-          <small>Срок</small>
-          <b>Предзаказ</b>
-          <div style="font-size:13px;color:var(--muted);margin-top:2px">1–2 дня на сборку</div>
-        </div>
+      <div class="block">
+        <small>Состав</small>
+        <p id="dComp"></p>
       </div>
       <div class="price-line">Стоимость — по запросу</div>
-      <a class="order" id="order" href="#">Заказать</a>
+      <a class="order" id="order" href="#" target="_blank" rel="noopener">Заказать</a>
     </div>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>
