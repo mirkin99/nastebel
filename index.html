@@ -41,18 +41,15 @@
     .tg svg { width: 18px; height: 18px; }
     .lead { margin-top: 16px; font-size: 14px; line-height: 1.45; color: rgba(255,255,255,.88); font-weight: 500; }
     .note { margin-top: 8px; font-size: 12.5px; line-height: 1.4; color: rgba(255,255,255,.62); }
-
     .portfolio-section { padding: 20px 14px 8px; background: #000; }
     .portfolio-btn { display: flex; align-items: center; justify-content: center; width: 100%; height: 56px; border-radius: 999px; border: 0; background: #fff; color: #111; font-weight: 700; font-size: 16px; cursor: pointer; }
     .portfolio-btn:active { transform: scale(0.98); }
-
     .about { position: relative; overflow: hidden; background: #000; padding: 16px 14px calc(32px + var(--safe)); }
     .about h2 { font-family: Fredoka, sans-serif; font-size: 22px; font-weight: 500; padding: 12px 6px 16px; letter-spacing: .02em; }
     .about-card { border-radius: 28px; background: rgba(12,12,12,.46); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 18px 16px 16px; }
     .about p { font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.86); margin-bottom: 10px; }
     .about p:last-child { margin-bottom: 0; }
     .about p.bold { font-weight: 700; }
-
     .portfolio { position: fixed; inset: 0; z-index: 30; width: min(430px, 100%); margin: 0 auto; background: #050505; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .3s ease, visibility .3s ease; display: flex; flex-direction: column; }
     .portfolio.open { opacity: 1; visibility: visible; pointer-events: auto; }
     .portfolio-header { display: flex; align-items: center; justify-content: space-between; padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 8px; }
@@ -65,7 +62,6 @@
     .portfolio-name { font-family: Fredoka, sans-serif; font-size: 22px; font-weight: 600; line-height: 1.15; margin-bottom: 8px; }
     .portfolio-comp { font-size: 14px; line-height: 1.45; color: rgba(255,255,255,.78); margin-bottom: 14px; }
     .portfolio-brand { font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--beige); text-align: center; padding-top: 4px; border-top: 1px solid rgba(255,255,255,.1); }
-
     body.light { background: #ffffff; color: #1a1a1a; }
     body.light .phone { background: #ffffff; }
     body.light .hero-bg-img { display: none; }
@@ -110,11 +106,9 @@
         <p class="note">Регулярные поставки, сезонные композиции и инсталляции с сухоцветами. Работаем с учётом вашего бюджета, формата и особенностей пространства.</p>
       </div>
     </section>
-
     <div class="portfolio-section">
       <button class="portfolio-btn" id="portfolioBtn" type="button">Портфолио мастерской</button>
     </div>
-
     <section class="about" id="about">
       <h2>О мастерской</h2>
       <div class="about-card">
@@ -127,7 +121,6 @@
       </div>
     </section>
   </div>
-
   <div class="portfolio" id="portfolio" aria-hidden="true">
     <div class="portfolio-header">
       <button class="portfolio-close" id="portfolioClose" type="button" aria-label="Закрыть">✕</button>
@@ -145,7 +138,6 @@
       </div>
     </div>
   </div>
-
   <script>
     const IDS = {
       "bg.jpg": "1E7lS_ryt7dr0pDGXxcyAnsnf2VF3cB6m",
@@ -166,12 +158,9 @@
       "3": "1buaY5GbomuWC5M6UUeZm9C8ewGvkTj7B",
       "5": "1GR6D_uAa7jW0iptqYyz4eXVHdNOBamYB",
       "9": "1y8ZSmCnYZjl8jfAkKHW1CW3jYkY4l3nq",
-      "10": "194m4uqAzDYkzf5rbJvN-xOk8o3lYbp_A",
       "11": "1-1FerrAz0wNFtcHJAlINg4vfphIQpX5_",
-      "13": "1k8saJOPvevINA4w09g96fgQ2CcuT5G7n",
       "14": "1ipCVqgGG5lK5NTKmL1KYZqK-h8DGRXvR"
     };
-
     function imgSrc(key, size) {
       const id = IDS[key] || IDS[String(key).toLowerCase()];
       return id ? ("https://lh3.googleusercontent.com/d/" + id + "=s" + (size || 1200)) : "";
@@ -190,50 +179,40 @@
         el.src = imgFallback(key, size);
       };
     }
-
     const BOUQUETS = [
-      { key: "1.2", name: "Букет 1.2", comp: "Состав по запросу" },
-      { key: "1.3", name: "Букет 1.3", comp: "Состав по запросу" },
-      { key: "1.4", name: "Букет 1.4", comp: "Состав по запросу" },
-      { key: "1.5", name: "Букет 1.5", comp: "Состав по запросу" },
-      { key: "1.6", name: "Букет 1.6", comp: "Состав по запросу" },
-      { key: "1.7", name: "Букет 1.7", comp: "Состав по запросу" },
-      { key: "1.8", name: "Букет 1.8", comp: "Состав по запросу" },
-      { key: "1.9", name: "Букет 1.9", comp: "Состав по запросу" },
-      { key: "1.10", name: "Букет 1.10", comp: "Состав по запросу" },
-      { key: "1.11", name: "Букет 1.11", comp: "Состав по запросу" },
-      { key: "1.12", name: "Букет 1.12", comp: "Состав по запросу" },
-      { key: "1.13", name: "Букет 1.13", comp: "Состав по запросу" },
-      { key: "1.14", name: "Букет 1.14", comp: "Состав по запросу" },
-      { key: "3", name: "Лимонад и ягоды", comp: "Кустовые розы, белая гортензия, гвоздика, душистый горошек, сухоцветы." },
-      { key: "5", name: "Первая оттепель", comp: "Пионовидные розы, эустома, верба, пшеница, цветущие ветки." },
-      { key: "9", name: "Весенний сад", comp: "Тюльпаны, гвоздика, матиола, форзиция, альстромерия, гиперикум, ветки." },
-      { key: "10", name: "Лимонный мёд", comp: "Пионовидные розы, эустома, твидия, форзиция, леукадендрон, цветущие ветки." },
-      { key: "11", name: "Янтарь и вино", comp: "Хризантемы, бордовая гортензия, диантус Green Trick, эремурус, лимониум, ковыль." },
-      { key: "13", name: "Высокая ваза", comp: "Книфофия, ромашки, хризантемы, диантус, гладиолус, эвкалипт." },
-      { key: "14", name: "Тропический фарфор", comp: "Георгины, гортензия, антуриум, гладиолус, амарантус, сухоцветы." }
+      { key: "1.2", name: "Дыхание леса", comp: "Эвкалипт, краспедия, лимониум, овёс, гортензия." },
+      { key: "1.3", name: "Свежее утро", comp: "Кустовая роза, кустовой диантус, хризантема Алемани." },
+      { key: "1.4", name: "Лёгкий день", comp: "Кустовая роза, лилия, кустовой диантус, хризантема Алемани." },
+      { key: "1.5", name: "Тихое воскресенье", comp: "Цветущие ветки, хризантема одноголовая, диантус, эвкалипт." },
+      { key: "1.6", name: "Дачное утро", comp: "Цветущие ветки, эвкалипт, ранункулюс, диантус." },
+      { key: "1.7", name: "Первый день лета", comp: "Оксипеталум, диантус кустовой, хризантема Сантини, хризантема Алемани, лизиантус, ветки choice." },
+      { key: "1.8", name: "Летняя веранда", comp: "Хризантема одноголовая, лунария, аллиум, орнитогалум, лизиантус." },
+      { key: "1.9", name: "Зелёный чай", comp: "Лилия, кустовая роза, кустовой диантус, хризантема Алемани." },
+      { key: "1.10", name: "Сад", comp: "Хризантема Сантини, дельфиниум, эустома, хризантема Алемани." },
+      { key: "1.11", name: "Дикий лес", comp: "Гладиолус, ромашка, хризантемы, статица, берграсс, книпхофия." },
+      { key: "1.12", name: "Тихое поле", comp: "Молюцелла, дельфиниум, кустовая роза, кустовой диантус, подсолнух, вибурнум." },
+      { key: "1.13", name: "Сорбет", comp: "Молюцелла, краспедия, гвоздика киви, ранункулюс баттерфляй, эустома." },
+      { key: "1.14", name: "Safari", comp: "Леукодендрон, анигозантус, гениста, роза Wedding Chapel, оксипеталум, кустовой диантус, львиный зев." },
+      { key: "3", name: "Розовый лимонад", comp: "Гортензия, кустовая роза, ранункулюс баттерфляй, ранункулюс одноголовый." },
+      { key: "5", name: "Пасхальное утро", comp: "Цветущие ветки, колосья, эустома, верба, роза Wedding Chapel." },
+      { key: "9", name: "Цветущий луг", comp: "Цветущие ветки, альстромерия, статица, львиный зев, тюльпан, диантус, гиперикум, кустовой диантус, гениста." },
+      { key: "11", name: "Сосновый бор", comp: "Гортензия, гвоздика киви, лимониум, подсолнух." },
+      { key: "14", name: "Водяной", comp: "Гортензия, гладиолус, антуриум, георгины, амарант, берграсс." }
     ];
-
     bindImg(document.getElementById("heroBg"), "bg.jpg", 2000);
     bindImg(document.getElementById("logo"), "logo.jpg", 400);
     document.getElementById("heroTg").href = "https://t.me/nastebel";
-
     const themeBtn = document.getElementById("themeBtn");
     function applyTheme(mode) {
       document.body.classList.toggle("light", mode === "light");
       try { localStorage.setItem("nastebel-theme", mode); } catch (e) {}
       const heroBg = document.getElementById("heroBg");
-      if (mode === "light") {
-        heroBg.style.display = "none";
-      } else {
-        heroBg.style.display = "";
-      }
+      if (mode === "light") { heroBg.style.display = "none"; } else { heroBg.style.display = ""; }
     }
     themeBtn.addEventListener("click", function () {
       applyTheme(document.body.classList.contains("light") ? "dark" : "light");
     });
     try { applyTheme(localStorage.getItem("nastebel-theme") || "dark"); } catch (e) { applyTheme("dark"); }
-
     const portfolio = document.getElementById("portfolio");
     const portfolioCard = document.getElementById("portfolioCard");
     const pImg = document.getElementById("pImg");
@@ -241,32 +220,21 @@
     const pComp = document.getElementById("pComp");
     const portfolioCounter = document.getElementById("portfolioCounter");
     let currentIndex = 0;
-
-    // Preload all portfolio images into memory
     const preloaded = {};
     function preloadAll() {
       BOUQUETS.forEach(function (b) {
         if (preloaded[b.key]) return;
         const img = new Image();
         img.referrerPolicy = "no-referrer";
-        const src = imgSrc(b.key, 1400);
-        img.src = src;
+        img.src = imgSrc(b.key, 1400);
         img.onerror = function () {
-          if (!img.dataset.fb) {
-            img.dataset.fb = "1";
-            img.src = imgFallback(b.key, 1400);
-          }
+          if (!img.dataset.fb) { img.dataset.fb = "1"; img.src = imgFallback(b.key, 1400); }
         };
         preloaded[b.key] = img;
       });
     }
-    // Start preloading in background after page load
-    if (document.readyState === "complete") {
-      setTimeout(preloadAll, 300);
-    } else {
-      window.addEventListener("load", function () { setTimeout(preloadAll, 300); });
-    }
-
+    if (document.readyState === "complete") { setTimeout(preloadAll, 300); }
+    else { window.addEventListener("load", function () { setTimeout(preloadAll, 300); }); }
     function showBouquet(i) {
       if (i < 0) i = BOUQUETS.length - 1;
       if (i >= BOUQUETS.length) i = 0;
@@ -276,15 +244,10 @@
       pComp.textContent = b.comp;
       portfolioCounter.textContent = (i + 1) + " / " + BOUQUETS.length;
       pImg.alt = b.name;
-      // Use preloaded image if ready, otherwise bind normally
       const cached = preloaded[b.key];
       if (cached && cached.complete && cached.naturalWidth > 0) {
-        pImg.src = cached.src;
-        pImg.dataset.fb = "";
-      } else {
-        bindImg(pImg, b.key, 1400);
-      }
-      // Also preload neighbors for even smoother next swipe
+        pImg.src = cached.src; pImg.dataset.fb = "";
+      } else { bindImg(pImg, b.key, 1400); }
       const next = BOUQUETS[(i + 1) % BOUQUETS.length];
       const prev = BOUQUETS[(i - 1 + BOUQUETS.length) % BOUQUETS.length];
       [next, prev].forEach(function (n) {
@@ -296,7 +259,6 @@
         }
       });
     }
-
     function openPortfolio() {
       preloadAll();
       showBouquet(0);
@@ -304,7 +266,6 @@
       portfolio.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
     }
-
     function closePortfolio() {
       portfolio.classList.remove("open");
       portfolio.setAttribute("aria-hidden", "true");
@@ -312,26 +273,19 @@
       portfolioCard.style.transform = "";
       portfolioCard.style.opacity = "";
     }
-
     document.getElementById("portfolioBtn").addEventListener("click", openPortfolio);
     document.getElementById("portfolioClose").addEventListener("click", closePortfolio);
-
     let startX = 0, startY = 0, dragging = false, moved = false;
     const cardWrap = document.getElementById("cardWrap");
-
     function onTouchStart(e) {
       const t = e.touches ? e.touches[0] : e;
-      startX = t.clientX;
-      startY = t.clientY;
-      dragging = true;
-      moved = false;
+      startX = t.clientX; startY = t.clientY; dragging = true; moved = false;
       portfolioCard.style.transition = "none";
     }
     function onTouchMove(e) {
       if (!dragging) return;
       const t = e.touches ? e.touches[0] : e;
-      const dx = t.clientX - startX;
-      const dy = t.clientY - startY;
+      const dx = t.clientX - startX, dy = t.clientY - startY;
       if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) {
         moved = true;
         if (e.cancelable) e.preventDefault();
@@ -380,7 +334,6 @@
         portfolioCard.style.opacity = "";
       }
     }
-
     cardWrap.addEventListener("touchstart", onTouchStart, { passive: true });
     cardWrap.addEventListener("touchmove", onTouchMove, { passive: false });
     cardWrap.addEventListener("touchend", onTouchEnd);
