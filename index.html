@@ -242,6 +242,31 @@
     const portfolioCounter = document.getElementById("portfolioCounter");
     let currentIndex = 0;
 
+    // Preload all portfolio images into memory
+    const preloaded = {};
+    function preloadAll() {
+      BOUQUETS.forEach(function (b) {
+        if (preloaded[b.key]) return;
+        const img = new Image();
+        img.referrerPolicy = "no-referrer";
+        const src = imgSrc(b.key, 1400);
+        img.src = src;
+        img.onerror = function () {
+          if (!img.dataset.fb) {
+            img.dataset.fb = "1";
+            img.src = imgFallback(b.key, 1400);
+          }
+        };
+        preloaded[b.key] = img;
+      });
+    }
+    // Start preloading in background after page load
+    if (document.readyState === "complete") {
+      setTimeout(preloadAll, 300);
+    } else {
+      window.addEventListener("load", function () { setTimeout(preloadAll, 300); });
+    }
+
     function showBouquet(i) {
       if (i < 0) i = BOUQUETS.length - 1;
       if (i >= BOUQUETS.length) i = 0;
@@ -250,11 +275,30 @@
       pName.textContent = b.name;
       pComp.textContent = b.comp;
       portfolioCounter.textContent = (i + 1) + " / " + BOUQUETS.length;
-      bindImg(pImg, b.key, 1400);
       pImg.alt = b.name;
+      // Use preloaded image if ready, otherwise bind normally
+      const cached = preloaded[b.key];
+      if (cached && cached.complete && cached.naturalWidth > 0) {
+        pImg.src = cached.src;
+        pImg.dataset.fb = "";
+      } else {
+        bindImg(pImg, b.key, 1400);
+      }
+      // Also preload neighbors for even smoother next swipe
+      const next = BOUQUETS[(i + 1) % BOUQUETS.length];
+      const prev = BOUQUETS[(i - 1 + BOUQUETS.length) % BOUQUETS.length];
+      [next, prev].forEach(function (n) {
+        if (!preloaded[n.key]) {
+          const img = new Image();
+          img.referrerPolicy = "no-referrer";
+          img.src = imgSrc(n.key, 1400);
+          preloaded[n.key] = img;
+        }
+      });
     }
 
     function openPortfolio() {
+      preloadAll();
       showBouquet(0);
       portfolio.classList.add("open");
       portfolio.setAttribute("aria-hidden", "false");
