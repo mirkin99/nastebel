@@ -23,74 +23,295 @@
       --glow: rgba(197, 180, 153, 0.28);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { background: #050505; color: #fff; font-family: Manrope, system-ui, sans-serif; }
-    body { min-height: 100dvh; }
+    html {
+      background: #050505;
+      color: #fff;
+      font-family: Manrope, system-ui, sans-serif;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    body {
+      min-height: 100dvh;
+      overscroll-behavior-y: none;
+      -webkit-font-smoothing: antialiased;
+    }
     img { display: block; max-width: 100%; }
     button, a { font-family: inherit; }
-    .phone { width: min(430px, 100%); margin: 0 auto; min-height: 100dvh; position: relative; overflow-x: hidden; background: #050505; }
-    .hero { position: relative; min-height: 100dvh; display: flex; align-items: center; justify-content: center; padding: 28px 18px 36px; }
-    .hero-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.04); }
-    .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.32) 45%, rgba(0,0,0,.58) 100%); }
-    .theme-btn { position: absolute; top: calc(14px + env(safe-area-inset-top, 0px)); right: 16px; z-index: 3; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(255,255,255,.22); background: rgba(0,0,0,.38); color: #fff; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-weight: 700; cursor: pointer; }
-    .glass { position: relative; z-index: 1; width: 100%; border-radius: var(--radius); background: var(--glass); backdrop-filter: blur(22px) saturate(1.2); -webkit-backdrop-filter: blur(22px) saturate(1.2); border: 1px solid rgba(255,255,255,.16); box-shadow: 0 24px 60px rgba(0,0,0,.45); padding: 22px 18px 18px; }
+    .phone {
+      width: min(430px, 100%);
+      margin: 0 auto;
+      min-height: 100dvh;
+      position: relative;
+      overflow-x: hidden;
+      background: #050505;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    .hero {
+      position: relative;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 18px 36px;
+      gap: 16px;
+    }
+    .hero-bg-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      transform: scale(1.04);
+      will-change: transform;
+    }
+    .hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.32) 45%, rgba(0,0,0,.58) 100%);
+    }
+    .theme-btn {
+      position: absolute;
+      top: calc(14px + env(safe-area-inset-top, 0px));
+      right: 16px;
+      z-index: 3;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(0,0,0,.38);
+      color: #fff;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .theme-btn svg { width: 22px; height: 22px; display: block; }
+    .theme-btn .icon-moon { display: none; }
+    body.light .theme-btn .icon-sun { display: none; }
+    body.light .theme-btn .icon-moon { display: block; }
+    .glass {
+      position: relative; z-index: 1;
+      width: 100%;
+      border-radius: var(--radius);
+      background: var(--glass);
+      backdrop-filter: blur(22px) saturate(1.2);
+      -webkit-backdrop-filter: blur(22px) saturate(1.2);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 24px 60px rgba(0,0,0,.45);
+      padding: 22px 18px 18px;
+    }
     .hero-top { display: flex; gap: 16px; align-items: flex-start; }
-    .logo { width: 84px; height: 84px; border-radius: 24px; object-fit: cover; object-position: center; flex-shrink: 0; box-shadow: 0 8px 20px rgba(0,0,0,.35); background: #1a1a1a; }
+    .logo {
+      width: 84px; height: 84px;
+      border-radius: 24px;
+      object-fit: cover; object-position: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 20px rgba(0,0,0,.35);
+      background: #1a1a1a;
+    }
     .hero-text { flex: 1; min-width: 0; }
-    .brand { font-family: Fredoka, sans-serif; font-weight: 600; font-size: 28px; line-height: 1; letter-spacing: .02em; }
-    .tg { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; height: 44px; border-radius: 999px; background: #fff; color: #111; text-decoration: none; font-weight: 700; font-size: 14px; width: 100%; }
+    .brand {
+      font-family: Fredoka, sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: .02em;
+    }
+    .tg {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 12px; height: 44px;
+      border-radius: 999px;
+      background: #fff; color: #111;
+      text-decoration: none;
+      font-weight: 700; font-size: 14px;
+      width: 100%;
+    }
     .tg svg { width: 18px; height: 18px; }
-    .lead { margin-top: 16px; font-size: 14px; line-height: 1.45; color: rgba(255,255,255,.88); font-weight: 500; }
-    .note { margin-top: 8px; font-size: 12.5px; line-height: 1.4; color: rgba(255,255,255,.62); }
-    .portfolio-section { padding: 20px 14px 8px; background: #000; }
-    .portfolio-btn { display: flex; align-items: center; justify-content: center; width: 100%; height: 56px; border-radius: 999px; border: 0; background: #fff; color: #111; font-weight: 700; font-size: 16px; cursor: pointer; }
-    .portfolio-btn:active { transform: scale(0.98); }
-    .about { position: relative; overflow: hidden; background: #000; padding: 16px 14px calc(32px + var(--safe)); }
-    .about h2 { font-family: Fredoka, sans-serif; font-size: 22px; font-weight: 500; padding: 12px 6px 16px; letter-spacing: .02em; }
-    .about-card { border-radius: 28px; background: rgba(12,12,12,.46); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 18px 16px 16px; }
-    .about p { font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.86); margin-bottom: 10px; }
+    .lead {
+      margin-top: 16px;
+      font-size: 14px; line-height: 1.45;
+      color: rgba(255,255,255,.88);
+      font-weight: 500;
+    }
+    .note {
+      margin-top: 8px;
+      font-size: 12.5px; line-height: 1.4;
+      color: rgba(255,255,255,.62);
+    }
+    .hero-portfolio-btn {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 56px;
+      border-radius: 999px; border: 0;
+      background: #fff; color: #111;
+      font-weight: 700; font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+    .hero-portfolio-btn:active { transform: scale(0.98); }
+    .about {
+      position: relative;
+      overflow: hidden;
+      background: #000;
+      padding: 16px 14px calc(32px + var(--safe));
+    }
+    .about h2 {
+      font-family: Fredoka, sans-serif;
+      font-size: 22px; font-weight: 500;
+      padding: 12px 6px 16px;
+      letter-spacing: .02em;
+    }
+    .about-card {
+      border-radius: 28px;
+      background: rgba(12,12,12,.46);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 18px 16px 16px;
+    }
+    .about p {
+      font-size: 14px; line-height: 1.5;
+      color: rgba(255,255,255,.86);
+      margin-bottom: 10px;
+    }
     .about p:last-child { margin-bottom: 0; }
     .about p.bold { font-weight: 700; }
-    .portfolio { position: fixed; inset: 0; z-index: 30; width: min(430px, 100%); margin: 0 auto; background: #050505; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .3s ease, visibility .3s ease; display: flex; flex-direction: column; }
+    .portfolio {
+      position: fixed; inset: 0; z-index: 30;
+      width: min(430px, 100%);
+      margin: 0 auto;
+      background: #050505;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity .3s ease, visibility .3s ease;
+      display: flex; flex-direction: column;
+    }
     .portfolio.open { opacity: 1; visibility: visible; pointer-events: auto; }
-    .portfolio-header { display: flex; align-items: center; justify-content: space-between; padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 8px; }
-    .portfolio-close { width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); color: #fff; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-    .portfolio-counter { font-size: 14px; color: rgba(255,255,255,.7); font-weight: 600; }
-    .portfolio-card-wrap { flex: 1; display: flex; align-items: center; justify-content: center; padding: 8px 16px 16px; position: relative; overflow: hidden; }
-    .portfolio-card { width: 100%; max-width: 380px; background: #111; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.5); display: flex; flex-direction: column; transition: transform .25s ease, opacity .25s ease; touch-action: pan-y; }
-    .portfolio-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center; background: #222; }
+    .portfolio-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 8px;
+    }
+    .portfolio-close {
+      width: 40px; height: 40px;
+      border-radius: 50%; border: 0;
+      background: rgba(255,255,255,.12);
+      color: #fff; font-size: 22px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .portfolio-counter {
+      font-size: 14px;
+      color: rgba(255,255,255,.7);
+      font-weight: 600;
+    }
+    .portfolio-card-wrap {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      padding: 8px 16px 16px;
+      position: relative; overflow: hidden;
+    }
+    .portfolio-card {
+      width: 100%; max-width: 380px;
+      background: #111;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,.5);
+      display: flex; flex-direction: column;
+      transition: transform .25s ease, opacity .25s ease, box-shadow .2s ease;
+      touch-action: pan-y;
+      border: 2px solid transparent;
+    }
+    .portfolio-card.swiping-dark {
+      box-shadow: 0 20px 50px rgba(0,0,0,.5), 0 0 0 2px rgba(255,255,255,.55), 0 0 24px rgba(255,255,255,.2);
+    }
+    .portfolio-card.swiping-light {
+      box-shadow: 0 12px 40px rgba(0,0,0,.12), 0 0 0 2px rgba(22,22,22,.45), 0 0 20px rgba(22,22,22,.12);
+    }
+    .portfolio-card img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover; object-position: center;
+      background: #222;
+    }
     .portfolio-info { padding: 16px 18px 20px; background: #111; }
-    .portfolio-name { font-family: Fredoka, sans-serif; font-size: 22px; font-weight: 600; line-height: 1.15; margin-bottom: 8px; }
-    .portfolio-comp { font-size: 14px; line-height: 1.45; color: rgba(255,255,255,.78); margin-bottom: 14px; }
-    .portfolio-brand { font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--beige); text-align: center; padding-top: 4px; border-top: 1px solid rgba(255,255,255,.1); }
+    .portfolio-name {
+      font-family: Fredoka, sans-serif;
+      font-size: 22px; font-weight: 600;
+      line-height: 1.15; margin-bottom: 8px;
+    }
+    .portfolio-comp {
+      font-size: 14px; line-height: 1.45;
+      color: rgba(255,255,255,.78);
+      margin-bottom: 14px;
+    }
+    .portfolio-brand {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: .06em;
+      color: var(--beige);
+      text-align: center;
+      padding-top: 4px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
     body.light { background: #ffffff; color: #1a1a1a; }
+    body.light html, body.light { background: #ffffff; }
     body.light .phone { background: #ffffff; }
     body.light .hero-bg-img { display: none; }
     body.light .hero::after { background: transparent; }
-    body.light .glass { background: rgba(255,255,255,.92); border-color: rgba(0,0,0,.08); box-shadow: 0 12px 40px rgba(0,0,0,.08); }
+    body.light .glass {
+      background: rgba(255,255,255,.92);
+      border-color: rgba(0,0,0,.08);
+      box-shadow: 0 12px 40px rgba(0,0,0,.08);
+    }
     body.light .lead { color: rgba(22,22,22,.82); }
     body.light .note { color: rgba(22,22,22,.55); }
     body.light .tg { background: #161616; color: #fff; }
-    body.light .theme-btn { background: rgba(0,0,0,.06); color: #161616; border-color: rgba(22,22,22,.12); }
-    body.light .portfolio-section { background: #ffffff; }
-    body.light .portfolio-btn { background: #161616; color: #fff; }
+    body.light .theme-btn {
+      background: rgba(0,0,0,.06);
+      color: #161616;
+      border-color: rgba(22,22,22,.12);
+    }
+    body.light .hero-portfolio-btn {
+      background: #161616; color: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    }
     body.light .about { background: #ffffff; }
-    body.light .about-card { background: rgba(0,0,0,.03); border-color: rgba(0,0,0,.08); }
+    body.light .about-card {
+      background: rgba(0,0,0,.03);
+      border-color: rgba(0,0,0,.08);
+    }
     body.light .about p { color: rgba(22,22,22,.82); }
     body.light .portfolio { background: #ffffff; }
-    body.light .portfolio-close { background: rgba(0,0,0,.08); color: #161616; }
+    body.light .portfolio-close {
+      background: rgba(0,0,0,.08); color: #161616;
+    }
     body.light .portfolio-counter { color: rgba(22,22,22,.6); }
-    body.light .portfolio-card { background: #f5f5f5; box-shadow: 0 12px 40px rgba(0,0,0,.12); }
+    body.light .portfolio-card {
+      background: #f5f5f5;
+      box-shadow: 0 12px 40px rgba(0,0,0,.12);
+    }
     body.light .portfolio-info { background: #f5f5f5; }
     body.light .portfolio-name { color: #161616; }
     body.light .portfolio-comp { color: rgba(22,22,22,.72); }
-    body.light .portfolio-brand { color: var(--olive); border-top-color: rgba(0,0,0,.08); }
+    body.light .portfolio-brand {
+      color: var(--olive);
+      border-top-color: rgba(0,0,0,.08);
+    }
   </style>
 </head>
 <body>
   <div class="phone">
     <section class="hero">
       <img class="hero-bg-img" id="heroBg" alt="" referrerpolicy="no-referrer" />
-      <button class="theme-btn" id="themeBtn" type="button" aria-label="Сменить тему">Aa</button>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Сменить тему">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z"/>
+        </svg>
+      </button>
       <div class="glass">
         <div class="hero-top">
           <img class="logo" id="logo" alt="NA STEBEL" referrerpolicy="no-referrer" />
@@ -105,10 +326,8 @@
         <p class="lead">Цветочная мастерская в Москве. Оформляем магазины, кафе, рестораны и другие пространства цветами под стиль и задачи вашего заведения.</p>
         <p class="note">Регулярные поставки, сезонные композиции и инсталляции с сухоцветами. Работаем с учётом вашего бюджета, формата и особенностей пространства.</p>
       </div>
+      <button class="hero-portfolio-btn" id="portfolioBtn" type="button">Портфолио мастерской</button>
     </section>
-    <div class="portfolio-section">
-      <button class="portfolio-btn" id="portfolioBtn" type="button">Портфолио мастерской</button>
-    </div>
     <section class="about" id="about">
       <h2>О мастерской</h2>
       <div class="about-card">
@@ -207,7 +426,9 @@
       document.body.classList.toggle("light", mode === "light");
       try { localStorage.setItem("nastebel-theme", mode); } catch (e) {}
       const heroBg = document.getElementById("heroBg");
-      if (mode === "light") { heroBg.style.display = "none"; } else { heroBg.style.display = ""; }
+      if (mode === "light") { heroBg.style.display = "none"; }
+      else { heroBg.style.display = ""; }
+      document.querySelector('meta[name="theme-color"]').setAttribute("content", mode === "light" ? "#ffffff" : "#050505");
     }
     themeBtn.addEventListener("click", function () {
       applyTheme(document.body.classList.contains("light") ? "dark" : "light");
@@ -272,11 +493,15 @@
       document.body.style.overflow = "";
       portfolioCard.style.transform = "";
       portfolioCard.style.opacity = "";
+      portfolioCard.classList.remove("swiping-dark", "swiping-light");
     }
     document.getElementById("portfolioBtn").addEventListener("click", openPortfolio);
     document.getElementById("portfolioClose").addEventListener("click", closePortfolio);
     let startX = 0, startY = 0, dragging = false, moved = false;
     const cardWrap = document.getElementById("cardWrap");
+    function swipeClass() {
+      return document.body.classList.contains("light") ? "swiping-light" : "swiping-dark";
+    }
     function onTouchStart(e) {
       const t = e.touches ? e.touches[0] : e;
       startX = t.clientX; startY = t.clientY; dragging = true; moved = false;
@@ -291,12 +516,14 @@
         if (e.cancelable) e.preventDefault();
         portfolioCard.style.transform = "translateX(" + dx + "px) rotate(" + (dx * 0.04) + "deg)";
         portfolioCard.style.opacity = String(1 - Math.min(Math.abs(dx) / 400, 0.4));
+        portfolioCard.classList.add(swipeClass());
+        portfolioCard.classList.remove(swipeClass() === "swiping-dark" ? "swiping-light" : "swiping-dark");
       }
     }
     function onTouchEnd(e) {
       if (!dragging) return;
       dragging = false;
-      portfolioCard.style.transition = "transform .25s ease, opacity .25s ease";
+      portfolioCard.style.transition = "transform .25s ease, opacity .25s ease, box-shadow .25s ease";
       const t = e.changedTouches ? e.changedTouches[0] : e;
       const dx = t.clientX - startX;
       if (moved && Math.abs(dx) > 80) {
@@ -305,11 +532,12 @@
           portfolioCard.style.opacity = "0";
           setTimeout(function () {
             showBouquet(currentIndex + 1);
+            portfolioCard.classList.remove("swiping-dark", "swiping-light");
             portfolioCard.style.transition = "none";
             portfolioCard.style.transform = "translateX(40%)";
             portfolioCard.style.opacity = "0";
             requestAnimationFrame(function () {
-              portfolioCard.style.transition = "transform .25s ease, opacity .25s ease";
+              portfolioCard.style.transition = "transform .25s ease, opacity .25s ease, box-shadow .25s ease";
               portfolioCard.style.transform = "";
               portfolioCard.style.opacity = "";
             });
@@ -319,11 +547,12 @@
           portfolioCard.style.opacity = "0";
           setTimeout(function () {
             showBouquet(currentIndex - 1);
+            portfolioCard.classList.remove("swiping-dark", "swiping-light");
             portfolioCard.style.transition = "none";
             portfolioCard.style.transform = "translateX(-40%)";
             portfolioCard.style.opacity = "0";
             requestAnimationFrame(function () {
-              portfolioCard.style.transition = "transform .25s ease, opacity .25s ease";
+              portfolioCard.style.transition = "transform .25s ease, opacity .25s ease, box-shadow .25s ease";
               portfolioCard.style.transform = "";
               portfolioCard.style.opacity = "";
             });
@@ -332,6 +561,7 @@
       } else {
         portfolioCard.style.transform = "";
         portfolioCard.style.opacity = "";
+        portfolioCard.classList.remove("swiping-dark", "swiping-light");
       }
     }
     cardWrap.addEventListener("touchstart", onTouchStart, { passive: true });
