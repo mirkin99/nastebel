@@ -41,17 +41,18 @@
     .tg svg { width: 18px; height: 18px; }
     .lead { margin-top: 16px; font-size: 14px; line-height: 1.45; color: rgba(255,255,255,.88); font-weight: 500; }
     .note { margin-top: 8px; font-size: 12.5px; line-height: 1.4; color: rgba(255,255,255,.62); }
-    .about, .catalog { position: relative; overflow: hidden; background: #000; }
-    .about { padding: 16px 14px 20px; }
-    .catalog { padding: 8px 14px calc(32px + var(--safe)); }
-    .about h2, .catalog h2 { font-family: Fredoka, sans-serif; font-size: 22px; font-weight: 500; padding: 12px 6px 16px; letter-spacing: .02em; }
+
+    .portfolio-section { padding: 20px 14px 8px; background: #000; }
+    .portfolio-btn { display: flex; align-items: center; justify-content: center; width: 100%; height: 56px; border-radius: 999px; border: 0; background: #fff; color: #111; font-weight: 700; font-size: 16px; cursor: pointer; }
+    .portfolio-btn:active { transform: scale(0.98); }
+
+    .about { position: relative; overflow: hidden; background: #000; padding: 16px 14px calc(32px + var(--safe)); }
+    .about h2 { font-family: Fredoka, sans-serif; font-size: 22px; font-weight: 500; padding: 12px 6px 16px; letter-spacing: .02em; }
     .about-card { border-radius: 28px; background: rgba(12,12,12,.46); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 18px 16px 16px; }
     .about p { font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.86); margin-bottom: 10px; }
     .about p:last-child { margin-bottom: 0; }
-    .portfolio-btn { display: flex; align-items: center; justify-content: center; width: 100%; height: 56px; border-radius: 999px; border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.08); color: #fff; font-weight: 700; font-size: 16px; cursor: pointer; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-    .portfolio-btn:active { transform: scale(0.98); }
+    .about p.bold { font-weight: 700; }
 
-    /* Portfolio overlay — Tinder-style */
     .portfolio { position: fixed; inset: 0; z-index: 30; width: min(430px, 100%); margin: 0 auto; background: #050505; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .3s ease, visibility .3s ease; display: flex; flex-direction: column; }
     .portfolio.open { opacity: 1; visibility: visible; pointer-events: auto; }
     .portfolio-header { display: flex; align-items: center; justify-content: space-between; padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 8px; }
@@ -65,7 +66,6 @@
     .portfolio-comp { font-size: 14px; line-height: 1.45; color: rgba(255,255,255,.78); margin-bottom: 14px; }
     .portfolio-brand { font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--beige); text-align: center; padding-top: 4px; border-top: 1px solid rgba(255,255,255,.1); }
 
-    /* Light theme */
     body.light { background: #ffffff; color: #1a1a1a; }
     body.light .phone { background: #ffffff; }
     body.light .hero-bg-img { display: none; }
@@ -75,10 +75,11 @@
     body.light .note { color: rgba(22,22,22,.55); }
     body.light .tg { background: #161616; color: #fff; }
     body.light .theme-btn { background: rgba(0,0,0,.06); color: #161616; border-color: rgba(22,22,22,.12); }
-    body.light .about, body.light .catalog { background: #ffffff; }
+    body.light .portfolio-section { background: #ffffff; }
+    body.light .portfolio-btn { background: #161616; color: #fff; }
+    body.light .about { background: #ffffff; }
     body.light .about-card { background: rgba(0,0,0,.03); border-color: rgba(0,0,0,.08); }
     body.light .about p { color: rgba(22,22,22,.82); }
-    body.light .portfolio-btn { background: #161616; color: #fff; border-color: #161616; }
     body.light .portfolio { background: #ffffff; }
     body.light .portfolio-close { background: rgba(0,0,0,.08); color: #161616; }
     body.light .portfolio-counter { color: rgba(22,22,22,.6); }
@@ -110,25 +111,23 @@
       </div>
     </section>
 
+    <div class="portfolio-section">
+      <button class="portfolio-btn" id="portfolioBtn" type="button">Портфолио мастерской</button>
+    </div>
+
     <section class="about" id="about">
       <h2>О мастерской</h2>
       <div class="about-card">
-        <p>NASTEBEL — цветочная мастерская, специализирующаяся на оформлении коммерческих пространств.</p>
+        <p class="bold">NASTEBEL — цветочная мастерская, специализирующаяся на оформлении коммерческих пространств.</p>
         <p>Создаём букеты и композиции под задачи бизнеса: для постоянного оформления, праздников, мероприятий и специальных поводов.</p>
         <p>Каждая композиция создаётся индивидуально — с учётом стиля интерьера, атмосферы заведения и ваших пожеланий.</p>
-        <p>Работаем как с разовыми заказами, так и по формату цветочной подписки на 1, 2 или 3 месяца.</p>
+        <p class="bold">Работаем как с разовыми заказами, так и по формату цветочной подписки на 1, 2 или 3 месяца.</p>
         <p>При регулярном обслуживании самостоятельно организуем весь процесс: согласовываем состав и график поставок, привозим новые композиции, забираем предыдущие и заменяем их свежими.</p>
         <p>Подбираем решение под ваш формат, бюджет и необходимую частоту обновления.</p>
       </div>
     </section>
-
-    <section class="catalog" id="catalog">
-      <h2>Работы</h2>
-      <button class="portfolio-btn" id="portfolioBtn" type="button">Портфолио мастерской</button>
-    </section>
   </div>
 
-  <!-- Portfolio overlay -->
   <div class="portfolio" id="portfolio" aria-hidden="true">
     <div class="portfolio-header">
       <button class="portfolio-close" id="portfolioClose" type="button" aria-label="Закрыть">✕</button>
@@ -151,20 +150,19 @@
     const IDS = {
       "bg.jpg": "1E7lS_ryt7dr0pDGXxcyAnsnf2VF3cB6m",
       "logo.jpg": "1MG6APfUyH004zygBVvI-TA2w0fywPS6K",
-      "1.1": "1H0yFvxqvyrvyfD8al5IZUpOKfhKYn-gq",
-      "1.2": "1H9rNqU7Kam6hJiRwnqNZ3ZOroMOnJ6GW",
-      "1.3": "1JcIReYPPaMWl3hQfnDirfIkSMr0hxygs",
-      "1.4": "1E_qewZam29FWiAhtDs2WWfRP1eT4gzyS",
-      "1.5": "1l0LPiDGaTaDV_uYuIxj8KfXhoBWRMSQ2",
-      "1.6": "1WDjN9RjQ4KdyqfcT34cztBZRmOHD81c3",
-      "1.7": "1LD6pus_LHiCxyWxmL8HzpdLF6ny3XLs5",
-      "1.8": "1bwJM5FOUfpSvwj8b893Ak6-cbMv0c6Nz",
-      "1.9": "1raSKcSA3jH6wVuicC6LF71C5YaqWeei3",
-      "1.10": "1A0sZb4rC2pItJR7jTaVUc7rLdtxyQMHt",
-      "1.11": "1ur6I79Zq6UDSE5hvYVq1oCXNR__bUvmB",
-      "1.12": "1xgQwHm-9FzQtSAe6TvfMldgBHfPWBd89",
-      "1.13": "13GLmiBBd04swhUIxHqGS1_yyxnwg22dN",
-      "1.14": "1yXPVBa556LURuZ31Y183TKE3zl8Khyzf",
+      "1.2": "1zr6KOzahcaQfdR-wbJiyPhCGkVajBDNE",
+      "1.3": "1yDEXntcJsSB_EnX4WwYsp28G7J2jNAWS",
+      "1.4": "133owg7_vh2jlFNLmX7S4Sagek9Nq1BGk",
+      "1.5": "1QNcwKw9F_mv11AnGstk6owbCPJ-zhTj1",
+      "1.6": "1L1GBfJ2UrnTgGMX17iemub9CfEwJeCwn",
+      "1.7": "1D4lAWD9cT8FL9DOzrQ9q7H8cy8VWcVXD",
+      "1.8": "1Ul2f-qCH_PSdM91D49MqxLI24Uz4z8OH",
+      "1.9": "1l3x4fO3djJE2a0cz3oQOVOyv03AmfaQ6",
+      "1.10": "17w0R7UCrOR-sWhI9rjAMlcvJBpdaOC2H",
+      "1.11": "1al1sFxl15BqXSJFwsQnGWjI9OiBfzia0",
+      "1.12": "1r7ouQGoLWSlEQi28uDB6VO6M_F5fVbE0",
+      "1.13": "1GdYpBF0bPkjZqQATp6aa7VeMnvRVUJHT",
+      "1.14": "1VIV8bTTsCiU2E33uVTQO2n6KDRL13guu",
       "3": "1buaY5GbomuWC5M6UUeZm9C8ewGvkTj7B",
       "5": "1GR6D_uAa7jW0iptqYyz4eXVHdNOBamYB",
       "9": "1y8ZSmCnYZjl8jfAkKHW1CW3jYkY4l3nq",
@@ -194,7 +192,6 @@
     }
 
     const BOUQUETS = [
-      { key: "1.1", name: "Букет 1.1", comp: "Состав по запросу" },
       { key: "1.2", name: "Букет 1.2", comp: "Состав по запросу" },
       { key: "1.3", name: "Букет 1.3", comp: "Состав по запросу" },
       { key: "1.4", name: "Букет 1.4", comp: "Состав по запросу" },
@@ -217,12 +214,10 @@
       { key: "14", name: "Тропический фарфор", comp: "Георгины, гортензия, антуриум, гладиолус, амарантус, сухоцветы." }
     ];
 
-    // Hero images
     bindImg(document.getElementById("heroBg"), "bg.jpg", 2000);
     bindImg(document.getElementById("logo"), "logo.jpg", 400);
     document.getElementById("heroTg").href = "https://t.me/nastebel";
 
-    // Theme
     const themeBtn = document.getElementById("themeBtn");
     function applyTheme(mode) {
       document.body.classList.toggle("light", mode === "light");
@@ -239,7 +234,6 @@
     });
     try { applyTheme(localStorage.getItem("nastebel-theme") || "dark"); } catch (e) { applyTheme("dark"); }
 
-    // Portfolio
     const portfolio = document.getElementById("portfolio");
     const portfolioCard = document.getElementById("portfolioCard");
     const pImg = document.getElementById("pImg");
@@ -278,7 +272,6 @@
     document.getElementById("portfolioBtn").addEventListener("click", openPortfolio);
     document.getElementById("portfolioClose").addEventListener("click", closePortfolio);
 
-    // Swipe
     let startX = 0, startY = 0, dragging = false, moved = false;
     const cardWrap = document.getElementById("cardWrap");
 
@@ -310,7 +303,6 @@
       const dx = t.clientX - startX;
       if (moved && Math.abs(dx) > 80) {
         if (dx < 0) {
-          // swipe left → next
           portfolioCard.style.transform = "translateX(-120%) rotate(-12deg)";
           portfolioCard.style.opacity = "0";
           setTimeout(function () {
@@ -325,7 +317,6 @@
             });
           }, 220);
         } else {
-          // swipe right → prev
           portfolioCard.style.transform = "translateX(120%) rotate(12deg)";
           portfolioCard.style.opacity = "0";
           setTimeout(function () {
@@ -349,7 +340,6 @@
     cardWrap.addEventListener("touchstart", onTouchStart, { passive: true });
     cardWrap.addEventListener("touchmove", onTouchMove, { passive: false });
     cardWrap.addEventListener("touchend", onTouchEnd);
-    // Mouse support for desktop testing
     cardWrap.addEventListener("mousedown", function (e) { onTouchStart(e); });
     window.addEventListener("mousemove", function (e) { if (dragging) onTouchMove(e); });
     window.addEventListener("mouseup", function (e) { if (dragging) onTouchEnd(e); });
